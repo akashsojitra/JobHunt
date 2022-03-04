@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Login And Registration</title>
+</head>
+
+<body>
+    
+    <h1 class="text-center border-bottom"> Job Hunt</h1><br>
+    {% with messages = get_flashed_messages() %}     
+        {% if messages %}                            
+        {% for message in messages %}            
+         <p>{{message}}</p>                   
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-dark">Registration</h1>
+                <form action="/register" , method="POST" class="col-9 bg-light text-light my-5 p-4 r-2">
+                    <div class="form-control">
+                        <label for="first_name">First Name</label>
+                        <input type="text" name="first_name" class="form-control">
+                    </div><br>
+                    <div class="form-control">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" name="last_name" class="form-control">
+                    </div><br>
+                    <div class="form-control">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" class="form-control">
+                    </div><br>
+                    <div class="form-control">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control">
+                    </div><br>
+                    <div class="form-control">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" name="confirm_password" class="form-control">
+                    </div><br>
+                    <input type="submit" value="Register" class="btn btn-primary btn-lg px-4 gap-3">
+
+                </form>
+            </div>
+            <div class="col">
+                <h1 class="text-dark">Login</h1>
+                <form action="/login" , method="POST" class="col-9 bg-light text-light my-5 p-4 r-2">
+                    <div class="form-control">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" class="form-control">
+                    </div><br>
+                    <div class="form-control">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control">
+                    </div><br>
+                    <input type="submit" value="Login" class="btn btn-primary btn-lg px-4 gap-3">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

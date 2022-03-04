@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <title>Edit Job</title>
+</head>
+<a href="/jobs" class="btn btn-primary btn-lg px-4 gap-3 my-5">Dashboard</a>
+<a href="/logout" class="btn btn-primary btn-lg px-4 gap-3 my-5">Logout</a>
+
+
+<h2 class="text-center">Edit A Job</h2>
+{% with messages = get_flashed_messages() %}     
+    {% if messages %}                            
+    {% for message in messages %}            
+     <p>{{message}}</p>                   
+    {% endfor %}
+{% endif %}
+{% endwith %}
+<div class="container">
+    <div class="col">
+        <h2 class="text-center">EDIT {{job.company_name}}:</h2>
+        <form action="/updatejob/{{job.id}}" method="POST" class="col-9 bg-light text-light my-5 p-4 r-2">
+            <div class="form-control">
+                <label for="company_name">Company Name :</label>
+                <input type="text" name="company_name" value="{{job.company_name}}" class="form-control">
+            </div><br>
+            <div class="form-control">
+                <label for="position">Position :</label>
+                <input type="text" name="position" value="{{job.position}}" class="form-control">
+            </div><br>
+            <div class="form-control">
+                <label for="status">Status :</label>
+                <input type="text" name="status" value="{{job.status}}" class="form-control">
+            </div><br>
+            <div class="form-control">
+                <label for="follow_up">Follow Up</label>
+                <input type="text" name="follow_up" value="{{job.follow_up}}" class="form-control">
+            </div><br>
+
+            <input type="submit" value="Update" class="btn btn-primary btn-lg px-4 gap-3">
+    </div>
+</div>
+</form>
+</body>
+
+</html>
